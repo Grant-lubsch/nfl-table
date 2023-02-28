@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <link rel="stylesheet" href="nfl-take2.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.9/jquery.csv.js" type="application/javascript"></script>
+    <script type="text/javascript">
+      function goToNewPage() {
+        var url = document.getElementById('date-dropdown').value;
+        if(url != 'none') {
+            window.location = url;
+          }
+        }
+    </script>
+  </head>
+
+  <body>
+      <title>NFL Stats Take2</title>
+      <script src="nfl-take2.js" type="application/javascript"></script>
+      <select id ='date-dropdown' class='date-dropdown'>
+        <option value="">Please select a year</option>
+      </select>
+
+      <script>
+        let dateDropdown = document.getElementById('date-dropdown');
+        let currentYear = new Date().getFullYear();
+        let earliestYear = 1970;
+        while (currentYear >= earliestYear) {
+          let dateOption = document.createElement('option');
+          dateOption.text = currentYear;
+          dateOption.value = currentYear;
+          dateDropdown.add(dateOption);
+          currentYear -= 1;
+        }
+
+          initOnChangeYear();
+      </script>
+      <div class="peanut-Butter" id="csv-display">
+          <!-- this is where the table data will go -->
+      </div>
+  </body>
+</html>
